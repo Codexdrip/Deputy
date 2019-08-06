@@ -1,3 +1,12 @@
+![Oauth with Deputy](https://github.com/CRFullStack/Deputy/blob/master/src/img/Screenshot%20(1).png)
+
+![Oauth with Deputy](https://github.com/CRFullStack/Deputy/blob/master/src/img/Screenshot%20(2).png)
+
+# This is a Sample Oauth Login to get the Deputy profile for the User
+
+### I'm using react on the frontend to make the request for our client
+### I'm also using express on the backend to handle the routes
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
