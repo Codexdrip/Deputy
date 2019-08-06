@@ -8,6 +8,15 @@ const cors = require("cors");
 const morgan = require("morgan");
 var indexRouter = require("./routes/index");
 var userRouter = require("./routes/users");
+const mongoose = require("mongoose");
+const { USER, PASS } = require("./utils/dbAuth");
+const { options } = require("./db_helpers/users");
+const mongoDB = `mongodb://${USER}:${PASS}@ds045679.mlab.com:45679/deputy`;
+
+mongoose
+  .connect(mongoDB, options)
+  .then(() => console.log("connection succesful"))
+  .catch(err => console.error(err));
 
 var app = express();
 

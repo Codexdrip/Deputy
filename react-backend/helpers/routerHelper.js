@@ -1,4 +1,7 @@
-const Joi = require("@hapi/joi");
+const Joi = require("joi");
+const userController = require("../controllers/users.js");
+
+// schema used to verify name and email & password
 const authSchema = Joi.object().keys({
   email: Joi.string()
     .email()
@@ -6,36 +9,17 @@ const authSchema = Joi.object().keys({
   password: Joi.string().required()
 });
 
+//export this method
+// validateBody email and password meet requirements
 module.exports = {
-  debuger: () => {
-    return (req, res, next) => {
-      console.log("req.body debugger: ", req.body);
-    };
-  },
-  validateBody: schemas => {
-    return (req, res, next) => {
-      schemas.validate(req.body, (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-
-        console.log(result);
-        //userController.signUp();
-      });
-      // req.value.body instead of req.body
-    };
-  },
-
-  validate: reqg => {
-    console.log("hello>");
+  validateBody: (req, res) => {
     authSchema.validate(req, (err, result) => {
       if (err) {
-        console.log(err);
+        res.json(err);
+      } else {
+        console.log("joi: ", result);
+        userController.signUp(result, res); // sign up the user
       }
-
-      console.log("joi: ", result);
-      //userController.signUp();
     });
-    // req.value.body instead of req.body
   }
 };

@@ -1,21 +1,16 @@
 import React, { Component } from "react";
+import Deputy from "../img/deputy.png";
 
 class GetMe extends Component {
   state = { users: [] };
 
-  componentDidMount() {
-    fetch("/deputy")
-      .then(res => res.json())
-      .then(users => this.setState({ users }));
-  }
-
   render() {
     return (
       <div className="App">
-        <h1>Users</h1>
-        {this.state.users.map(user => (
-          <div key={user.Login}>{user.Name}</div>
-        ))}
+        <h1>sign in to deputy</h1>
+        <a href={"http://localhost:5000/auth/example"}>
+          <img src={Deputy} alt="sad..." />
+        </a>
       </div>
     );
   }
